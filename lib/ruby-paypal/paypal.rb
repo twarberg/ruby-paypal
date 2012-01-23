@@ -351,10 +351,10 @@ class Paypal
         product_params = {}
         total_price = 0.0
         products.each_with_index do |product, index|
-          product_params["L_PAYMENTREQUEST_0_NAME#{index}"] = product[:name] if product[:name].present?
-          product_params["L_PAYMENTREQUEST_0_QTY#{index}"] = product[:quantity] if product[:quantity].present?
+          product_params["L_PAYMENTREQUEST_0_NAME#{index}"] = product[:name] unless product[:name].nil?
+          product_params["L_PAYMENTREQUEST_0_QTY#{index}"] = product[:quantity] unless product[:quantity].nil?
           product_params["L_PAYMENTREQUEST_0_AMT#{index}"] = product[:price]
-          product_params["L_PAYMENTREQUEST_0_DESC#{index}"] = product[:description] if product[:description].present?
+          product_params["L_PAYMENTREQUEST_0_DESC#{index}"] = product[:description] unless product[:description].nil?
           total_price += product[:price].to_f
         end
         product_params["PAYMENTREQUEST_0_AMT"] = total_price.to_s
