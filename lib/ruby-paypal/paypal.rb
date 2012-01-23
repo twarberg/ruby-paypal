@@ -365,11 +365,12 @@ class Paypal
       #
       # Equivalent of GetExpressCheckoutDetails.
       #
-      def get_express_checkout_details(token)
+      def get_express_checkout_details(token, other_params={})
         params = {
           'METHOD' => 'GetExpressCheckoutDetails',
           'TOKEN' => token
         }
+        params.merge! other_params
         make_nvp_call(params)
       end
 
