@@ -385,9 +385,9 @@ class Paypal
         params = {
           'METHOD' => 'DoExpressCheckoutPayment',
           'TOKEN' => token,
-          'PAYMENTACTION' => payment_action,
+          'PAYMENTREQUEST_0_PAYMENTACTION' => payment_action,
           'PAYERID' => payer_id,
-          'AMT' => amount
+          'PAYMENTREQUEST_0_AMT' => amount
         }
 
         params.merge! other_params
